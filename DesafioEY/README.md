@@ -185,7 +185,7 @@ Nessa desafio eles davam uma página de login e pediam pra encontrar o arquivo/d
 ```bash
 $dirb http://http://158.69.192.239
 ```
-e ele encontrou o diretório ___backup, que tinha um arquivo docx contendo as informações, então eu fiz o login e peguei a flag
+e ele encontrou o diretório _backup, que tinha um arquivo docx contendo as informações, então eu fiz o login e peguei a flag
 
 Obs.: eu não terminei os dsafios a tempo, então provavelmente fiquei de fora da seleção, mas é isso aí, que venham mais seleções desse jeito kk
 
