@@ -1,7 +1,7 @@
 # Christmas Challenges - Secure Lab
 
 Challenge proposed in: https://shellterlabs.com/en/questions/christmas-challenge-2017/secure-lab/  
-In this challenge our work is discovery the system's password. I wrote the following script in python to do bruteforce attack using the rockyou as wordlist and socket module. It took about half an hour to find the password.
+In this challenge our work is discovery the system's password. I wrote the following script in python to make bruteforce attack using the rockyou as wordlist and socket module. It took about half an hour to find the password.
 
 
 ```python
