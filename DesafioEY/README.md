@@ -62,7 +62,7 @@ scanned 1 barcode symbols from 1 images in 0.06 seconds
 
 Uma outra alternativa era usar o programa montage
 ```bash
-$montage -mode concatenate -title 25x25 $(ls -v) out.jpg
+$montage -mode concatenate -title 25x25 $(ls -v *) out.jpg
 ```
 
 ## Criptografia
@@ -120,7 +120,7 @@ e quando quando executado ele retornava a seguinte mensagem
 $./crackme
 Found the hidden treasure
 ```
-Usando o comando strings vejo que o programa usa a função strcat, que concatena duas strings, então eu usei o ltrace que monitora as chamadas de funções das bibliotecas importadas
+Usando o comando strings vejo que o programa usa a função strcat, que concatena duas strings, então eu usei o ltrace, que monitora as chamadas de funções das bibliotecas importadas e vi quais eram essas strings
 ```bash
 ltrace ./crackme
 puts("Found the hidden treasure"Found the hidden treasure
@@ -139,7 +139,7 @@ EY{V0C3_M4NJ4_D3_R3V}
 O desafio de coding necessitava de um pouco de conhecimento sobre socket, era uma espécie de jogo onde você tinha 2 segundos para dizer qual o maior número em uma sequência
 
 ```bash
-nc 158.69.192.239 1337
+$ nc 158.69.192.239 1337
 
 Ola, seja bem vindo e nao repare na bagunca.
 O jogo consiste em responder os desafios corretamente dentro de 3 segundos.
@@ -187,5 +187,5 @@ $dirb http://http://158.69.192.239
 ```
 e ele encontrou o diretório _backup, que tinha um arquivo docx contendo as informações, então eu fiz o login e peguei a flag
 
-Obs.: eu não terminei os dsafios a tempo, então provavelmente fiquei de fora da seleção, mas é isso aí, que venham mais seleções desse jeito kk
+Obs.: eu não terminei os desafios a tempo, então provavelmente fiquei de fora da seleção, mas é isso aí, que venham mais seleções desse jeito kk
 
