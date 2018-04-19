@@ -122,7 +122,7 @@ Found the hidden treasure
 ```
 Usando o comando strings vejo que o programa usa a função strcat, que concatena duas strings, então eu usei o ltrace, que monitora as chamadas de funções das bibliotecas importadas e vi quais eram essas strings
 ```bash
-ltrace ./crackme
+$ ltrace ./crackme
 puts("Found the hidden treasure"Found the hidden treasure
 )            = 26
 strcat("EY{VjBDM19NNE5K", "NF9EM19SM1Y=}")   = "EY{VjBDM19NNE5KNF9EM19SM1Y=}"
@@ -181,7 +181,7 @@ EY{G0774_G0_F457_M47H}
 Os desafios de web não podem ser mostrados com muita clareza porque o ambiente deles não está mais online, mas o web 15 era uma página de login e no código fonte tinha um javascript que era usado para validar login e senha, era só pegar esses valores, fazer o login e pegar a flag: EY{G0D_BL355_B4D_D3V5}
 
 ### Web50
-Nessa desafio eles davam uma página de login e pediam pra encontrar o arquivo/diretório de backup, que seria ond as credenciais de login estarian, eu usei o dirb e encontrei o seguinte:
+Nesse desafio eles davam uma página de login e pediam pra encontrar o arquivo/diretório de backup, que seria onde as credenciais de login estariam, eu usei o dirb e encontrei o seguinte:
 ```bash
 $dirb http://http://158.69.192.239
 ```
