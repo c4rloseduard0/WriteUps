@@ -10,12 +10,12 @@ A Ernst & Young (EY) é uma empresa que presta serviços em diversas áreas e es
 * Wireshark
 
 ## Lista de Desafios
-**[Misc](#misc)**  
-**[Criptografia](#criptografia)**  
-**[NET](#net)**  
-**[Reverse](#reverse)**  
-**[Coding](#coding)**  
-**[Web](#web)**  
+**[Misc](#misc)**
+**[Criptografia](#criptografia)**
+**[NET](#net)**
+**[Reverse](#reverse)**
+**[Coding](#coding)**
+**[Web](#web)**
 
 ## Misc
 ### Misc30
@@ -53,16 +53,17 @@ for i in range(1, 26):
 
 new_image.save("out.jpg", "JPEG")
 ```
+
+Uma outra alternativa era usar o programa montage
+```bash
+$montage -mode concatenate -title 25x25 $(ls -v *) out.jpg
+```
+
 A imagem de saída era um QRcode, era só colocar no leitor qualquer e capturar a flag, eu usei o zbarimg por questões de praticidade
 ```bash
 $zbarimg out.jpg
 QR-Code:EY{1M_G0NN4_N33D_M0R3_GLU3}
 scanned 1 barcode symbols from 1 images in 0.06 seconds
-```
-
-Uma outra alternativa era usar o programa montage
-```bash
-$montage -mode concatenate -title 25x25 $(ls -v *) out.jpg
 ```
 
 ## Criptografia
@@ -174,6 +175,7 @@ while True:
     s.send(bytes(maior, 'utf-8'))
 ```
 Depois de fazer isso diversas vezes, ele me retorna a flag:
+![GIF da resolução](https://raw.githubusercontent.com/c4rloseduard0/WriteUps/master/DesafioEY/coding50.gif)
 EY{G0774_G0_F457_M47H}
 
 ## Web
