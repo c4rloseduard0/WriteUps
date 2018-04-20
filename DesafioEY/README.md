@@ -10,19 +10,19 @@ A Ernst & Young (EY) é uma empresa que presta serviços em diversas áreas e es
 * Wireshark
 
 ## Lista de Desafios
-**[Misc](#misc)**  
-**[Criptografia](#criptografia)**  
-**[NET](#net)**  
-**[Reverse](#reverse)**  
-**[Coding](#coding)**  
-**[Web](#web)**  
+* **[Misc](#misc)**  
+* **[Criptografia](#criptografia)**  
+* **[NET](#net)**  
+* **[Reverse](#reverse)**  
+* **[Coding](#coding)**  
+* **[Web](#web)**  
 
 ## Misc
 ### Misc30
 O primeiro desafio de misc era um arquivo zip com senha, eu fiz um ataque de força bruta usando fcrackzip e a rockyou como wordlist
 
 ```bash
-$fcrackzip -v -u -D -p rockyou.txt misc30.zip
+$ fcrackzip -v -u -D -p rockyou.txt misc30.zip
 found file 'flag.txt', (size cp/uc     45/    33, flags 9, chk 60c8)
 
 
@@ -30,7 +30,7 @@ PASSWORD FOUND!!!!: pw == sakura10
 ```
 Depois era só descompactar o arquivo e ver a flag que estava encriptada em base64
 ```bash
-$base64 -d flag.txt
+$ base64 -d flag.txt
 EY{BRUT3_F0RC3_R0CK_Y0U}
 ```
 
@@ -56,12 +56,12 @@ new_image.save("out.jpg", "JPEG")
 
 Uma outra alternativa era usar o programa montage
 ```bash
-$montage -mode concatenate -title 25x25 $(ls -v *) out.jpg
+$ montage -mode concatenate -title 25x25 $(ls -v *) out.jpg
 ```
 
 A imagem de saída era um QRcode, era só colocar no leitor qualquer e capturar a flag, eu usei o zbarimg por questões de praticidade
 ```bash
-$zbarimg out.jpg
+$ zbarimg out.jpg
 QR-Code:EY{1M_G0NN4_N33D_M0R3_GLU3}
 scanned 1 barcode symbols from 1 images in 0.06 seconds
 ```
@@ -70,7 +70,7 @@ scanned 1 barcode symbols from 1 images in 0.06 seconds
 O desafio de cripto era um simples texto em base32, só decodificar e pegar a flag
 
 ```bash
-$echo "IVMXWVCIGE2V6MJVL43TAMC7GM2DKWL5BI======" | base32 -d
+$ echo "IVMXWVCIGE2V6MJVL43TAMC7GM2DKWL5BI======" | base32 -d
 EY{TH15_15_700_345Y}
 ```
 
@@ -83,7 +83,7 @@ Nesse desafio era dado um um arquivo .pcap com um tráfego telnet, eram poucos p
 O NET50 era um trafego encriptado com WPA com um handshake, todo mundo que já tentou hackear o wifi do vizinho sabe o que é isso, então é só ter paciência e esperar o programa descobrir a senha. Eu usei o aircrack e a rockyou como wordlist, passei meia hora esperando essa senha ser quebrada
 
 ```bash
-$aircrack-ng -w rockyou.txt -e "iPhone" HANDSHAKE.cap
+$ aircrack-ng -w rockyou.txt -e "iPhone" HANDSHAKE.cap
 Opening HANDSHAKE.cap
 Opening HANDSHAKE.capse wait...
 Reading packets, please wait...
@@ -113,12 +113,12 @@ EY{giah0409}
 ## Reverse
 O desafio de reverse era relativamente simples, eles davam um binário ELF
 ```bash
-$file crackme
+$ file crackme
 crackme: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=faa60b06285e03242e7f957dfe084662eb5f39ad, not stripped
 ```
 e quando quando executado ele retornava a seguinte mensagem
 ```bash
-$./crackme
+$ ./crackme
 Found the hidden treasure
 ```
 Usando o comando strings vejo que o programa usa a função strcat, que concatena duas strings, então eu usei o ltrace, que monitora as chamadas de funções das bibliotecas importadas e vi quais eram essas strings
@@ -131,7 +131,7 @@ strcat("EY{VjBDM19NNE5K", "NF9EM19SM1Y=}")   = "EY{VjBDM19NNE5KNF9EM19SM1Y=}"
 ```
 E aí está a flag, porém ela esta em base64
 ```bash
-$echo "VjBDM19NNE5KNF9EM19SM1Y=" | base64 -d
+$ echo "VjBDM19NNE5KNF9EM19SM1Y=" | base64 -d
 V0C3_M4NJ4_D3_R3V
 ```
 EY{V0C3_M4NJ4_D3_R3V}
@@ -185,7 +185,7 @@ Os desafios de web não podem ser mostrados com muita clareza porque o ambiente 
 ### Web50
 Nesse desafio eles davam uma página de login e pediam pra encontrar o arquivo/diretório de backup, que seria onde as credenciais de login estariam, eu usei o dirb e encontrei o seguinte:
 ```bash
-$dirb http://http://158.69.192.239
+$ dirb http://158.69.192.239
 ```
 e ele encontrou o diretório _backup, que tinha um arquivo docx contendo as informações, então eu fiz o login e peguei a flag
 
