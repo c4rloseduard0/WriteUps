@@ -80,7 +80,7 @@ Nesse desafio era dado um um arquivo .pcap com um tráfego telnet, eram poucos p
 ![Foto do pacote com a flag](https://raw.githubusercontent.com/c4rloseduard0/WriteUps/master/DesafioEY/net30.png)
 
 ### NET50
-O NET50 era um trafego encriptado com WPA com um handshake, todo mundo que já tentou hackear o wifi do vizinho sabe o que é isso, então é só ter paciência e esperar o programa descobrir a senha. Eu usei o aircrack e a rockyou como wordlist, passei meia hora esperando essa senha ser quebrada
+O NET50 era um trafego de wifi com um handshake, todo mundo que já tentou hackear o wifi do vizinho sabe o que é um handshake, então é só fazer um bruteforce e ter paciência. Eu usei o aircrack e a rockyou como wordlist, passei meia hora esperando essa senha ser quebrada
 
 ```bash
 $ aircrack-ng -w rockyou.txt -e "iPhone" HANDSHAKE.cap
