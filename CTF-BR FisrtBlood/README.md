@@ -6,7 +6,7 @@
 * [Misc](#misc)  
    * [Cat-me](#cat-me)  
    * [Secreto](#secreto)  
-   * [Br@1n_Fuck](#br1nfuck)  
+   * [Br@1n_Fuck](#br1n_fuck)  
 * [#cr4ckth3c0k3](#cr4ckth3c0k3)  
    * [Crypt0_1](#crypt0_1)  
 * [Forensics](#forensics)  
