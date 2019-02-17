@@ -99,7 +99,7 @@ All defined functions:
 0x0000000000001000  _init  
 0x0000000000001030  puts@plt  
 0x0000000000001040  printf@plt  
-0x0000000000001050  __cxa_finalize@plt  
+0x0000000000001050  __cxa_finalize@plt 
 0x0000000000001060  _start  
 0x0000000000001090  deregister_tm_clones  
 0x00000000000010c0  register_tm_clones  
@@ -169,7 +169,7 @@ PASSWORD FOUND!!!!: pw == rasp~berry12
 
 ```
 
-Usando esse password para descomprimir o .zip conseguimos um arquivo chamado cat.me e seu conteudo está codificado em ROT13
+Usando esse password para descompactar o .zip conseguimos um arquivo chamado cat.me e seu conteudo está codificado em ROT13
 Decodificando ela temos:
 ![Texto decriptado](https://raw.githubusercontent.com/c4rloseduard0/WriteUps/master/CTF-BR%20FisrtBlood/cat.me.rot13.png)
 
@@ -195,7 +195,7 @@ GS2W{4716b435ce8ddd6ede25a2926d0c8d42}
 ```
 
 ## Br@1n\_Fuck
-Nesse desafio temos um link que leva a um arquivo chamado "coke cam.jpg", dando um file, vemos que não é uma imgem jpeg, mas sim um projeto do GIMP
+Nesse desafio temos um link que leva a um arquivo chamado "coke cam.jpg", dando um file, vemos que não é uma imagem jpeg, mas sim um projeto do GIMP
 ```
 $ file coke\ cam.jpg 
 coke cam.jpg: GIMP XCF image data, version 011, 554 x 443, RGB Color
@@ -254,7 +254,7 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed
 
 ```
-Tendo a senha podemos descompactar o arquivo e ver o seu conteudo, como eram arquivos .odt eu aproveitei e converti para texto, pois era mais prático e eu permitia ver algum conteúdo que eles tivessem mudado de cor  
+Tendo a senha podemos descompactar o arquivo e ver o seu conteudo, como eram arquivos .odt eu aproveitei e converti para texto, pois era mais prático e me permitia ver algum conteúdo que eles tivessem mudado de cor  
 ```
 $ odt2text Arte\ de\ Enganar.odt   
 $ odt2text Mr. Robot.odt 
@@ -328,10 +328,10 @@ GS2W{4ch0u-mizeravi!}
 
 # Programming
 ## Automation
-O enunciado nos dava uma operação:
-w + w + w = 30, logo w = 10
-g + g + g = 24, logo g = 8
-w*g/2 = s, logo s = 40
+O enunciado nos dava uma operação:  
+w + w + w = 30, logo w = 10  
+g + g + g = 24, logo g = 8  
+w*g/2 = s, logo s = 40  
 
 Dentro do arquivo flag.txt tinha um base64 enorme, provavelmente porque foi codificado várias vezes, reunindo as informações presumo que tenha sido codificado 40 vezes por conta do valor de s encontrado anteriormente, então fiz:
 ```
