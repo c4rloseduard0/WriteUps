@@ -1,5 +1,26 @@
-Reversing
-1. EasyPeasy
+# Tópicos
+* [Reversing](#reversing)
+** [EasyPeasy](#easypeasy)
+** [Pie is my favorite](#pieismyfavorite)
+** [WhiteRabbit](#whiterabbit)
+* [Misc](#misc)
+** [Cat-me](#catme)
+** [Secreto](#secreto)
+** [Br@1n_Fuck](#brnfuck)
+* [#cr4ckth3c0k3](#cr4ckth3c0k3)
+** [Crypt0_1](#crypt)
+* [Forensics](#forensics)
+** [Bad Commit](#badcommit)
+* [Programming](#programming)
+** [Automation](#automation)
+* [Pwn](#pwn)
+** [Just in time](#justintime)
+
+
+# Reversing
+
+## EasyPeasy
+
 O desafio nos dava um binário ELF que quando executado pedia uma senha
 
 ```bash
@@ -44,28 +65,9 @@ putchar(10, 0x55b7b7e5002e, 0x7fdacfda2720, 0Wrong password, try another
 ```
 Vemos que ele compara a nossa entrava com a string "easycrack", que é a senha correta e a flag ;)
 
-2. Pie is my favorite
-Aqui temos um binário ELF que quando executado pede um "número mágNon-debugging symbols:
-0x0000000000001000  \_init
-0x0000000000001030  puts@plt
-0x0000000000001040  printf@plt
-0x0000000000001050  __cxa_finalize@plt
-0x0000000000001060  _start
-0x0000000000001090  deregister_tm_clones
-0x00000000000010c0  register_tm_clones
-0x0000000000001100  __do_global_dtors_aux
-0x0000000000001140  frame_dummy
-0x0000000000001145  secret
-0x00000000000011d5  main
-0x0000000000001210  __libc_csu_init
-0x0000000000001270  __libc_csu_fini
-0x0000000000001274  \_finiico"
-```
-$ ./simple
-Welcome to the wonderful world of assembly!
-Qual o numero magico?
-```
-como o enunciado dizia "Who doesn't love pi?", coloquei o valor 3.14
+## Pie is my favorite
+
+Aqui temos um binário ELF que quando executado pede um "número mágico", como o enunciado dizia "Who doesn't love pi?", coloquei o valor 3.14
 ```
 $ ./simple
 Welcome to the wonderful world of assembly!
@@ -74,7 +76,7 @@ Essa eh a sua flag!
 ```
 Esse é o valor da flag: 3.14
 
-3. WhiteRabbit
+## WhiteRabbit
 Quando executamos o programa, ele nos dá:
 ```
 $ ./hidden_flag
@@ -94,20 +96,20 @@ Como sabemos que temos uma função escondida, o mais lógico é direcionar o fl
 gdb-peda$ i functions 
 All defined functions:
 
-0x0000000000001000  _init
-0x0000000000001030  puts@plt
-0x0000000000001040  printf@plt
-0x0000000000001050  __cxa_finalize@plt
-0x0000000000001060  _start
-0x0000000000001090  deregister_tm_clones
-0x00000000000010c0  register_tm_clones
-0x0000000000001100  __do_global_dtors_aux
-0x0000000000001140  frame_dummy
-0x0000000000001145  secret
-0x00000000000011d5  main
-0x0000000000001210  __libc_csu_init
-0x0000000000001270  __libc_csu_fini
-0x0000000000001274  _fini
+0x0000000000001000  _init  
+0x0000000000001030  puts@plt  
+0x0000000000001040  printf@plt  
+0x0000000000001050  __cxa_finalize@plt  
+0x0000000000001060  _start  
+0x0000000000001090  deregister_tm_clones  
+0x00000000000010c0  register_tm_clones  
+0x0000000000001100  __do_global_dtors_aux  
+0x0000000000001140  frame_dummy  
+0x0000000000001145  secret  
+0x00000000000011d5  main  
+0x0000000000001210  __libc_csu_init  
+0x0000000000001270  __libc_csu_fini  
+0x0000000000001274  _fini  
 
 ```
 A função escondida é a secret, agora só precisamos encontrar um jeito de chamá-la.  
@@ -150,8 +152,9 @@ Warning: not running or target is remote
 ```
 E aí está a flag ;)
 
-MISC
-1. Cat-me
+# Misc
+
+## Cat-me
 Esse desafio nos dava um arquivo .tar.gz e quando descompactado ficamos com um arquivo zip com senha
 ```
 $ tar -xzvf cat.me.tar.gz 
@@ -168,11 +171,11 @@ PASSWORD FOUND!!!!: pw == rasp~berry12
 
 Usando esse password para descomprimir o .zip conseguimos um arquivo chamado cat.me e seu conteudo está codificado em ROT13
 Decodificando ela temos:
-![Texto decriptado](cat.me.rot13.png)
+![Texto decriptado](https://raw.githubusercontent.com/c4rloseduard0/WriteUps/master/CTF-BR%20FisrtBlood/cat.me.rot13.png)
 
 E a flag é essa hash md5: d6ccd7af26b2841046ff53cd45c5f0bd
 
-2. Secreto
+## Secreto
 Esse desafio nos dava um pdf protegido por senha, para quebrá-la usei o john com wordlist rockyou.txt
 ```
 $ pdf2john secreto.pdf >> hash_secreto.txt
@@ -191,7 +194,7 @@ $ cat secreto.txt
 GS2W{4716b435ce8ddd6ede25a2926d0c8d42}
 ```
 
-3. Br@1n\_Fuck
+## Br@1n\_Fuck
 Nesse desafio temos um link que leva a um arquivo chamado "coke cam.jpg", dando um file, vemos que não é uma imgem jpeg, mas sim um projeto do GIMP
 ```
 $ file coke\ cam.jpg 
@@ -251,59 +254,59 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed
 
 ```
-Tendo a senha podemos descompactar o arquivo e ver o seu conteudo, como eram arquivos .odt eu aproveitei e converti para texto, pois era mais prático e eu permitia ver algum conteúdo que eles tivessem mudado de cor
+Tendo a senha podemos descompactar o arquivo e ver o seu conteudo, como eram arquivos .odt eu aproveitei e converti para texto, pois era mais prático e eu permitia ver algum conteúdo que eles tivessem mudado de cor  
 ```
-$ odt2text Arte\ de\ Enganar.odt 
+$ odt2text Arte\ de\ Enganar.odt   
 $ odt2text Mr. Robot.odt 
 ```
-como conteudo útil tem algumas hashes e uma mensagem: "envite menssage for this user https://t.me/X41x41", quando eu enviei a mensagem recebi mais algumas hashes, então as separei e encontrei o valor de cada uma
-Hashes de "Arte de enganar.odt":
-c4ca4238a0b923820dcc509a6f75849b
-7b8b965ad4bca0e41ab51de7b31363a1
-b14a7b8059d9c055954c92674ce60032
-800618943025315f869e4e1f09471012
-5058f1af8388633f609cadb75a75dc9d
-4a8a08f09d37b73795649038408b5f33
+como conteudo útil tem algumas hashes e uma mensagem: "envite menssage for this user https://t.me/X41x41", quando eu enviei a mensagem recebi mais algumas hashes, então as separei e encontrei o valor de cada uma  
+Hashes de "Arte de enganar.odt":  
+c4ca4238a0b923820dcc509a6f75849b  
+7b8b965ad4bca0e41ab51de7b31363a1  
+b14a7b8059d9c055954c92674ce60032  
+800618943025315f869e4e1f09471012  
+5058f1af8388633f609cadb75a75dc9d  
+4a8a08f09d37b73795649038408b5f33  
 
-Hashes que consegui enviando mensagem:
-8ce4b16b22b58894aa86c421e8759df3
-b14a7b8059d9c055954c92674ce60032
-9dd4e461268c8034f5c8564e155c67a6
-a87ff679a2f3e71d9181a67b7542122c
-c4ca4238a0b923820dcc509a6f75849b
-cbb184dd8e05c9709e5dcaedaa0495cf
+Hashes que consegui enviando mensagem:  
+8ce4b16b22b58894aa86c421e8759df3  
+b14a7b8059d9c055954c92674ce60032  
+9dd4e461268c8034f5c8564e155c67a6  
+a87ff679a2f3e71d9181a67b7542122c  
+c4ca4238a0b923820dcc509a6f75849b  
+cbb184dd8e05c9709e5dcaedaa0495cf  
 
-Hashes de "Mr. Robot.odt"
-dfcf28d0734569a6a693bc8194de62bf
-5dbc98dcc983a70728bd082d1a47546e
-61e9c06ea9a85a5088a499df6458d276
-f95b70fdc3088560732a5ac135644506
-9d5ed678fe57bcca610140957afab571
-4b43b0aee35624cd95b910189b3dc231
-518ed29525738cebdac49c49e60ea9d3
+Hashes de "Mr. Robot.odt"  
+dfcf28d0734569a6a693bc8194de62bf  
+5dbc98dcc983a70728bd082d1a47546e  
+61e9c06ea9a85a5088a499df6458d276  
+f95b70fdc3088560732a5ac135644506  
+9d5ed678fe57bcca610140957afab571  
+4b43b0aee35624cd95b910189b3dc231  
+518ed29525738cebdac49c49e60ea9d3  
 
-"Decriptando" essas hashes temos a flag 
-GS2W{Br@1n_F.ck_x41}
+"Decriptando" essas hashes temos a flag   
+GS2W{Br@1n_F.ck_x41}  
 
-#cr4ckth3c0k3
+# #cr4ckth3c0k3
 
-1. Crypt0_1
+## Crypt0_1
 O texto está encodado em ROT47
 
-2w#_4w|e{Jh;4?=H5vh:2(cF*agG~s5@|wx`2%*z}%}F2s"E3%|a}r_`|K+`4;"  -> aHR0cHM6Ly9jcnlwdG9iaW4uY28vODdoMHI1aTYKNTNuaDQtbTM2NC01MzZ1cjQ
+2w#_4w|e{Jh;4?=H5vh:2(cF*agG~s5@|wx\`2%*z}%}F2s"E3%|a}r_\`|K+\`4;"  -> aHR0cHM6Ly9jcnlwdG9iaW4uY28vODdoMHI1aTYKNTNuaDQtbTM2NC01MzZ1cjQ
 Ele nos dá um base64, fazendo o decode:
 ```
 $ echo "aHR0cHM6Ly9jcnlwdG9iaW4uY28vODdoMHI1aTYKNTNuaDQtbTM2NC01MzZ1cjQ=" | base64 -d
 https://cryptobin.co/87h0r5i6
 53nh4-m364-536ur4
 ```
-Com esse link e essa senha podemos entrar e decriptar e paramos em outro base64
+Com esse link e essa senha podemos entrar e decriptar e paramos em mensagem com base64
 ```
 $ echo <MENSAGEM> | base64 -d >> output
 $ file output
 output: PNG image data, 343 x 348, 8-bit/color RGBA, non-interlaced
 ```
-O conteúdo da imagem é um qrcode, usei o zbarima para pegar a mensagem:
+O conteúdo da imagem é um qrcode, usei o zbarimg para pegar a mensagem:
 ```
 $ zbarimg output
 QR-Code:qrcode#3321
@@ -312,9 +315,9 @@ scanned 1 barcode symbols from 1 images in 0.08 seconds
 ```
 E aí está a flag: qrcode#3321
 
-Forensics
+# Forensics
 
-1. Bad Commit
+## Bad Commit
 Esse desafio nos dava um arquivo .zip que quando descompactado tinha um arquivo projeto feito em python, esse projeto era versionado com o git, e como o nome do desafio sugeria, eu olhei o histórico de commits
 ```
 $ git log -p
@@ -323,8 +326,8 @@ GS2W{4ch0u-mizeravi!}
 (...)
 ```
 
-Programming
-1. Automation
+# Programming
+## Automation
 O enunciado nos dava uma operação:
 w + w + w = 30, logo w = 10
 g + g + g = 24, logo g = 8
@@ -336,8 +339,8 @@ $ for i in {1..40}; do b=$(cat flag.txt); echo -n $b | base64 -d > flag.txt ; do
 $ cat flag.txt
 ```
 
-pwn
-1. Just in time
+# Pwn
+## Just in time
 Esse desafio pedia que a gente fizesse conexão com um server: "nc imesec.ime.usp.br 9999", depois de conectado ele pedia um password, percebi que se colocasse
 a letra certa ele incrementava o valor que aparecia na resposta
 ```
@@ -355,11 +358,13 @@ $ for i in {0..~}; do echo -n "$i "; echo "G$i" | nc imesec.ime.usp.br 9999 ; do
 R Please input the password: false 0.05
 S Please input the password: false 0.1
 T Please input the password: false 0.05
+
 $ for i in {0..~}; do echo -n "$i "; echo "GS$i" | nc imesec.ime.usp.br 9999 ; done
 0 Please input the password: false 0.1
 1 Please input the password: false 0.1
 2 Please input the password: false 0.15
 3 Please input the password: false 0.1
+
 $ for i in {0..~}; do echo -n "$i "; echo "GS2$i" | nc imesec.ime.usp.br 9999 ; done
 (...)
 U Please input the password: false 0.15
