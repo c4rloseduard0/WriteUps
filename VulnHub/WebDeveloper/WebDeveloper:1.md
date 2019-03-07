@@ -6,11 +6,11 @@ Dificuldade: Easy
 ## Identificação e Enumeração
 O primeiro passo foi identificar o IP da VM:
 ```bash
-# netdiscover -r 192.168.0.1/24
+\# netdiscover -r 192.168.0.1/24
 ```
 O IP identificado foi 192.168.0.108. Fazendo um portscan simples com o nmap podemos ver que as portas 22 e 80 estão abertas, rodando SSH e HTTP, respectivamente:
 ```bash
-# nmap -sV -sT -p- 192.168.0.108
+\# nmap -sV -sT -p- 192.168.0.108
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
 80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
