@@ -177,7 +177,7 @@ Password: 11archives11!
 ```
 
 ### Para Le
-E pronto, estava logado como valenka, na pasta pessoal (~) não tinha nada, também não existiam tarefas no cron, então resolvi usar o [LinEnum](https://github.com/rebootuser/LinEnum) para automatizar a busca, e ele encontrou arquivos que pertenciam a outros usuários, mas eu tinha permissão de acesso.
+E pronto, estava logado como valenka, na pasta pessoal (~) não tinha nada, também não existiam tarefas no cron, então resolvi usar o [LinEnum](https://github.com/rebootuser/LinEnum) para automatizar a busca, e ele encontrou arquivos que pertenciam a outros usuários, mas eu tinha permissão de acesso.  
 ![suid](img/suid.png)
 
 Entrando nesse diretório vemos:
